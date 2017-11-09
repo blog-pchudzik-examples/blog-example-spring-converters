@@ -24,7 +24,20 @@ public class ControllerTest {
 		final String emptyId = "00000000-0000-0000-0000-000000000000";
 
 		//when
-		mockMvc.perform(MockMvcRequestBuilders.get("/find/" + emptyId))
+		mockMvc.perform(MockMvcRequestBuilders.get("/find-id/" + emptyId))
+
+				//then
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.id", equalTo(emptyId)));
+	}
+
+	@Test
+	public void should_parse_uuid_from_string() throws Exception {
+		//given
+		final String emptyId = "00000000-0000-0000-0000-000000000000";
+
+		//when
+		mockMvc.perform(MockMvcRequestBuilders.get("/find-uuid/" + emptyId))
 
 				//then
 				.andExpect(status().isOk())

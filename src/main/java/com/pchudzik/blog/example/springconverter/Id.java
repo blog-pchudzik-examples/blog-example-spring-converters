@@ -9,6 +9,10 @@ class Id {
 		this.uuid = uuid;
 	}
 
+	/**
+	 * Constructor to be used by spring to automatically convert from String to the Id class
+	 * @param uuid
+	 */
 	public Id(String uuid) {
 		this(UUID.fromString(uuid));
 	}
